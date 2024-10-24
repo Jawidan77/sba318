@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title Blog Posts
+    link(rel="stylesheet", href="/styles.css")
+  body
+    h1 Blog Posts
+    ul
+      each post in posts
+        li
+          h2 #{post.title}
+          p #{post.content}
+          p Written by #{post.author}
+          p Tags: #{post.tags.join(', ')}
+          p Likes: #{post.likes}
+
+    h2 Add a New Post
+    form(action="/posts" method="POST")
+      input(type="text" name="title" placeholder="Post Title" required)
+      textarea(name="content" placeholder="Post Content" required)
+      input(type="text" name="author" placeholder="Author" required)
+      input(type="text" name="tags" placeholder="Tags (comma-separated)")
+      button(type="submit") Add Post
